@@ -1,0 +1,26 @@
+
+
+//Use JWT as Bearer headings
+//Add the once per request filter, validate JWT, log acess, return secured endpoint
+//Make the HTML return page using thymeleaf model, try to add graphs/piechart
+//Integrate Checking Account overview/ withdraw / deposit
+//MAYBE add an interest rate, timestamping each account
+
+//Some more CSRF and XSS stuff and FILTERS UGH
+
+
+
+
+
+
+//Add this to a portfolio alongside my NEA
+
+//Next Up Java Chat service with UDP and TCP, similar to discor, maybe connect to a db to store images --> USe a h2 in memory db for the server to host images that way its volatile --> add ratelimit /filze max size**
+//Alot of code i can regurgitate from my Python online game but will have to change to java, maybe make a java and python version
+//Use java or C++ to make a rendering engine ****
+//Some drag and drop load management stuff maybe ***
+//Physics engine *****
+
+
+
+//test timesss
