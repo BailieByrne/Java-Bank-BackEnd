@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -81,9 +82,14 @@ public class CheckingController{
 	}
 	
 	
-	@ResponseStatus(HttpStatus.ACCEPTED)
-	@PostMapping("/withdraw/{id}")
-	void withdraw(@PathVariable("id") Integer id) {
+	@PostMapping("/withdraw/{Ownerid}/{account}/{amount}")
+	ResponseEntity<String> withdraw(@PathVariable("Ownerid") Integer OwnerId, @PathVariable("account") Integer accID, @PathVariable("amount") double amount) {
+		return WithdrawOrDeposit.withdraw(OwnerId, accID ,amount);
+	}
+	
+	@PostMapping("/deposit/{Ownerid}/{account}/{amount}")
+	ResponseEntity<String> deposit(@PathVariable("Ownerid") Integer OwnerId, @PathVariable("account") Integer accID, @PathVariable("amount") double amount) {
+		return WithdrawOrDeposit.deposit(OwnerId, accID ,amount);
 	}
 	
 	

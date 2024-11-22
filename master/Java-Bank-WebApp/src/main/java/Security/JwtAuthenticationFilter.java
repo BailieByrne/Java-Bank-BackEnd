@@ -41,16 +41,23 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 
                 String requestUri = request.getRequestURI();
-                Pattern accsPattern = Pattern.compile("/api/accs/(.+)");
-                Pattern devPattern = Pattern.compile("/api/dev/.*"); //Should allow everything
+                Pattern accsPattern = Pattern.compile("/api/accs/(?!withdraw|deposit)([^/]+)");
+                Pattern devPattern = Pattern.compile("/api/dev/.*");
+                Pattern withdrawPattern = Pattern.compile("/api/accs/withdraw/([^/]+)/.*");
+                Pattern depositPattern = Pattern.compile("/api/accs/deposit/([^/]+)/.*");
                 
                 Matcher accsMatcher = accsPattern.matcher(requestUri);
                 Matcher devMatcher = devPattern.matcher(requestUri);
+                Matcher withdrawMatcher = withdrawPattern.matcher(requestUri);
+                Matcher depositMatcher = depositPattern.matcher(requestUri);
                 
-                //NEED TO ADD LOGIC HERE TO ALLOW DEV REQUESTS TOO E.G DEV/GETUSERS
+       
 
-                if (accsMatcher.matches() || devMatcher.matches()) {
-                	 String requestUuid = accsMatcher.matches() ? accsMatcher.group(1) : "dev-request";
+                if (accsMatcher.matches() || withdrawMatcher.matches() || depositMatcher.matches() || devMatcher.matches()) {
+                	 String requestUuid = accsMatcher.matches() ? accsMatcher.group(1) : withdrawMatcher.matches() ? withdrawMatcher.group(1) :  depositMatcher.matches() ? depositMatcher.group(1) : "dev-request";
+                	 
+                	 
+                	 
                     if (tokenUuid != null && tokenUuid.toString().equals(requestUuid) || auths.equals("ADMIN")) {
                         // Directly set the SecurityContext as authenticated
                         AnonymousAuthenticationToken authentication = 

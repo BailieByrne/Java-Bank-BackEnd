@@ -20,11 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 import Account.AccountException;
 import Account.CheckingAcc;
 import Account.CrudAccRepository;
+import Account.WithdrawOrDeposit;
 import Security.JWTProvider;
 import Users.CrudUserRepository;
 import Users.User;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.With;
 
 @RestController
 @RequestMapping("/api/dev")
@@ -41,14 +43,15 @@ public class DevController {
 		return jwtProvider.getUsers();
 	}
 	
+	
 	@GetMapping("/manage/{user}")
 	public User manageruser(@PathVariable("user") String Username) {
 		User user = crudUserRepository.findByUsername(Username);
+		log.info("MANAGING "+ Username);
 		return user.withHiddenPassword();
 	}
 	
 	
-	@ResponseStatus(HttpStatus.ACCEPTED)
 	@PutMapping("/update")
 	void updateAccount(@Valid @RequestBody CheckingAcc account) {
 		System.out.println(account);
@@ -59,5 +62,6 @@ public class DevController {
 	public List<User> allusers(){
 		return crudUserRepository.findAll();
 	}
+	
 	
 }
