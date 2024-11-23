@@ -22,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @SpringBootApplication()
 @EnableJdbcRepositories(basePackageClasses = {CrudAccRepository.class,CrudUserRepository.class}) //neccessary to scan other packages for components andd dependancy injection
-@ComponentScan(basePackages = {"Account", "Web","Security","Users","DevTools"})
+@ComponentScan(basePackages = {"Account", "Web","Security","Users","DevTools","Stripe"})
 public class DemoApplication {
 	
 	public static final Logger log = LogManager.getLogger("MainLogger");

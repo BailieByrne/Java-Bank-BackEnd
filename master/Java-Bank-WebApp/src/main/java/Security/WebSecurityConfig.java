@@ -25,6 +25,7 @@ public class WebSecurityConfig {
             .securityMatcher("/api/**")
             .authorizeHttpRequests(registry -> registry
                 .requestMatchers("/").permitAll()
+                .requestMatchers("/verify-payment").permitAll()
                 .requestMatchers("/auth/login").permitAll()
                 .requestMatchers("/api/**").hasAnyAuthority("USER","ADMIN")
                 .requestMatchers("/dev/**").hasAuthority("ADMIN")

@@ -1,12 +1,5 @@
 
-
-//Use JWT as Bearer headings
-//Add the once per request filter, validate JWT, log acess, return secured endpoint
-//Make the HTML return page using thymeleaf model, try to add graphs/piechart
-//Integrate Checking Account overview/ withdraw / deposit
-//MAYBE add an interest rate, timestamping each account
-
-//Some more CSRF and XSS stuff and FILTERS UGH
+FETCH ID VERIFY IT FROM STRIPE API THEN UPDATE DB AND RETURN STATUS
 
 
 

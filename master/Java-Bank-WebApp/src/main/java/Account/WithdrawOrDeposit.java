@@ -30,7 +30,7 @@ public class WithdrawOrDeposit {
 
 	
 	@Transactional
-	static ResponseEntity<String> withdraw(Integer OwnerID, Integer AccID, double amount) {
+	public static ResponseEntity<String> withdraw(Integer OwnerID, Integer AccID, double amount) {
 		
 		
 		
@@ -64,7 +64,7 @@ public class WithdrawOrDeposit {
 	}
 
 	@Transactional
-	static ResponseEntity<String> deposit(Integer OwnerID, Integer AccID, double amount) {
+	public static ResponseEntity<String> deposit(Integer OwnerID, Integer AccID, double amount) {
 		
 		
 		
@@ -84,7 +84,7 @@ public class WithdrawOrDeposit {
 	        
 	        accRepository.updateBalance((prevBal + amount), OwnerID, AccID);
 	        log.info("Balance updated for User " + OwnerID + " for Account " + AccID);
-	        return new ResponseEntity<>("Withdrawal Success", HttpStatus.OK);
+	        return new ResponseEntity<>("Deposit Success", HttpStatus.OK);
 	    } catch (Exception e) {
 	        log.error("Error during deposit", e);
 	        return new ResponseEntity<>("Error", HttpStatus.UNAUTHORIZED);
