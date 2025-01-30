@@ -24,6 +24,9 @@ public class PaymentController {
 
     @Autowired
     private StripePaymentHandler stripeService;
+    
+    @Autowired
+    private WithdrawOrDeposit withdrawOrDeposit;
 
     @PostMapping("/api/payment/deposit/{userId}")
     public ResponseEntity<Map<String, Object>> deposit(@RequestBody StripeRequest request) {
@@ -31,7 +34,10 @@ public class PaymentController {
         return new ResponseEntity<>((stripeService.createPaymentIntent(amount)),HttpStatus.ACCEPTED);
     }
     
-    @PostMapping("/verify-payment")
+    @PostMapping("/api/payment/withdraw/{userId}")
+    public void withdraw(@RequestBody StripeWithdraw request){}
+    
+    @PostMapping("/verify-payment")    
     public ResponseEntity<String> verifyPayment(@RequestBody VerifyRequest paymentRequest) {
         try {
 
