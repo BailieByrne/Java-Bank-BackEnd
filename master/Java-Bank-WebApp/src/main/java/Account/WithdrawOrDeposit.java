@@ -30,8 +30,7 @@ public class WithdrawOrDeposit {
 
 	
 	@Transactional
-	public static ResponseEntity<String> withdraw(Integer OwnerID, Integer AccID, double amount) {
-		
+	public static ResponseEntity<String> withdraw(Integer OwnerID, Integer AccID, double amount) {		
 		
 		
 		if (amount < 0 || amount == 0) {

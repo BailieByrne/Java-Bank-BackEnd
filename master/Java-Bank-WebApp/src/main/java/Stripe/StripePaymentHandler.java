@@ -34,4 +34,11 @@ public class StripePaymentHandler {
             throw new RuntimeException("Failed to create payment intent", e);
         }
     }
+
+
+    public void CheckRefunds() {
+    	
+    }
 }
+
+	

@@ -33,4 +33,5 @@ public interface CrudAccRepository extends ListCrudRepository<CheckingAcc, Integ
 
     @Query("SELECT * FROM checkingaccounts WHERE OwnerID = :id")
     List<CheckingAcc> findAllAccountsById(@Param("id") Integer id);
+    
 }

@@ -25,8 +25,8 @@ public class WebSecurityConfig {
             .securityMatcher("/api/**")
             .authorizeHttpRequests(registry -> registry
                 .requestMatchers("/").permitAll()
-                .requestMatchers("/verify-payment").permitAll()
                 .requestMatchers("/auth/login").permitAll()
+                .requestMatchers("/verify-payment").hasAnyAuthority("USER","ADMIN")
                 .requestMatchers("/api/**").hasAnyAuthority("USER","ADMIN")
                 .requestMatchers("/dev/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
@@ -48,7 +48,7 @@ public class WebSecurityConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                    .allowedOrigins("https://localhost:5173")
+                    .allowedOrigins("https://localhost:5173","http://localhost:3000")
                     .allowedMethods("GET", "POST", "PUT")
                     .allowedHeaders("*")
                     .allowCredentials(true);
